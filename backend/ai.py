@@ -29,11 +29,26 @@ def rewrite_resume_bullets(resume_text: str, jd_keywords: str) -> str:
         messages=[
             {
                 "role": "system",
-                "content": "You are an expert resume writer. Rewrite resume bullet points to match job requirements naturally. Keep bullets under 20 words. Use strong action verbs. Do not invent skills the candidate does not have."
+                "content": """You are an expert resume writer. Rewrite the candidate's actual experience into strong resume bullets that naturally align with the job.
+
+Rules:
+- Only use skills and projects the candidate ACTUALLY has in their resume
+- Mention their real projects by name where they are relevant
+- Sound natural and human — not like a keyword list
+- Start every bullet with a strong action verb
+- Keep each bullet under 20 words
+- Do NOT invent anything not in the resume
+- Do NOT just copy job requirements as bullets"""
             },
             {
                 "role": "user",
-                "content": f"Job requires:\n{jd_keywords}\n\nResume content:\n{resume_text}\n\nRewrite the resume bullets to match the job requirements."
+                "content": f"""Candidate resume:
+{resume_text}
+
+Job requirements:
+{jd_keywords}
+
+Rewrite the candidate's real experience as strong resume bullets that highlight relevant skills and mention actual projects by name."""
             }
         ]
     )
@@ -46,11 +61,26 @@ def generate_cover_letter(resume_text: str, jd_text: str, tone: str) -> str:
         messages=[
             {
                 "role": "system",
-                "content": f"You are an expert cover letter writer. Write in a {tone} tone. Write exactly 3 paragraphs. Do not use cliches like 'I hope this finds you well'. Be direct and compelling."
+                "content": f"""You are an expert cover letter writer. Write in a {tone} tone.
+
+Rules:
+- Write exactly 3 paragraphs
+- Reference the candidate's REAL projects from their resume by name
+- Sound like a real human wrote this — confident and natural
+- Never use cliches like 'I hope this finds you well' or 'I am writing to express my interest'
+- Paragraph 1: who they are and why they are a strong fit for this specific role
+- Paragraph 2: mention 2 specific real projects from their resume that match the job
+- Paragraph 3: excitement about the role and a clear next step CTA"""
             },
             {
                 "role": "user",
-                "content": f"Job Description:\n{jd_text}\n\nCandidate Resume:\n{resume_text}\n\nWrite a tailored cover letter."
+                "content": f"""Candidate resume:
+{resume_text}
+
+Job description:
+{jd_text}
+
+Write a natural, confident cover letter that references the candidate's real projects by name."""
             }
         ]
     )
