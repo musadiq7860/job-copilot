@@ -12,11 +12,7 @@ load_dotenv(dotenv_path=os.path.join(os.path.dirname(os.path.abspath(__file__)),
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_KEY")
-
-if not SUPABASE_URL:
-    SUPABASE_URL = "https://wfoyeitrqcxsrlyihpnq.supabase.co"
-if not SUPABASE_KEY:
-    SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indmb3llaXRycWN4c3JseWlocG5xIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MzgyODU2NywiZXhwIjoyMDg5NDA0NTY3fQ.UB8_mzls0P558o1pCGE_u1RQ70cNoxUKjre2LIh6LZY"
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 app = FastAPI()
 

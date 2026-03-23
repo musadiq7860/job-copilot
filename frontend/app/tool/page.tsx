@@ -91,7 +91,7 @@ export default function ToolPage() {
         formData.append("user_id", user.id);
       }
 
-      const response = await fetch("http://127.0.0.1:8000/tailor", {
+      const response = await fetch("https://musadiq7860-job-copilot-api.hf.space/tailor", {
         method: "POST",
         body: formData,
       });
